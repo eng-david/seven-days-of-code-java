@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        
+
         Path path = Paths.get("secret.txt");
         StringBuilder url = new StringBuilder("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&");
 
@@ -27,12 +27,13 @@ public class App {
             e.printStackTrace();
         }
 
-
         String body = "";
         try {
             URI endereço = URI.create(url.toString());
             HttpClient client = HttpClient.newHttpClient();
-            HttpRequest request = HttpRequest.newBuilder(endereço).GET().build();
+            HttpRequest request = HttpRequest.newBuilder(endereço)
+                    .GET()
+                    .build();
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
             body = response.body();
         } catch (IOException | InterruptedException ex) {
