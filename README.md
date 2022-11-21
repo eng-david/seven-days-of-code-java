@@ -2,7 +2,7 @@
 
 <p align='center'><img src='assets/logo.svg' width=240 alt='logo'/></p>
 
-![In Development Badge](https://img.shields.io/badge/Status-Em%20Desenvolvimento-orange)
+![Development Status Badge](https://img.shields.io/badge/Status-Em%20Desenvolvimento-orange)
 
 ## Resumo do projeto:
 Usando apenas código Java, consumir uma API para pesquisar os top 250 filmes da lista do IMDB e criar um HTML com os resultados JSON devolvidos.
@@ -19,4 +19,4 @@ Usando apenas código Java, consumir uma API para pesquisar os top 250 filmes da
 - [X] Executar a requisição e pegar a resposta (o JSON)
 - [X] Imprimir o corpo da resposta no console
 
-<p align='center'><img src='assets/print-dia1.png' width=580 alt='print dia 1'/></p>
+<p align='center'><img src='assets/print-dia1.png' alt='print dia 1'/></p>
