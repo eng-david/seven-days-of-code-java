@@ -27,3 +27,9 @@ Usando apenas código Java, consumir uma API para pesquisar os top 250 filmes da
 - [x] Imprimir esses atributos no console.
 
 <p align='center'><img src='assets/print-dia2.png' alt='print dia 1'/></p>
+
+# Dia 3:
+- [x] Iniciar uma modelagem melhor do código através de uma classe Movie.
+- [X] A classe Movie terá os atributos: titulo, url de imagem, nota e ano de lançamento.
+
+<p align='center'><img src='assets/print-dia2.png' alt='print dia 1'/></p>
