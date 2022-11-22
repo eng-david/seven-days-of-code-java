@@ -1,5 +1,6 @@
 package br.com.voltorb.sdoc_java;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -15,7 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         // --- Build URL string with API key ---
         Path path = Paths.get("secret.txt");
@@ -32,10 +33,10 @@ public class App {
         }
 
         // --- Get API Json ---
-        //String json = fetchJson(url);
+        String json = fetchJson(url);
 
         // --- Get Json from file ---
-        String json = fetchJsonFromFile(Paths.get("json.txt"));
+        //String json = fetchJsonFromFile(Paths.get("json.txt"));
 
         // --- Generate Movies List ---
         String[] movies = moviesList(json);
@@ -50,6 +51,12 @@ public class App {
             System.out.println("rating: " + movie.rating());
             System.out.println("year: " + movie.year() + "\n");
         }
+
+        // --- Generate HTML file ---
+        FileWriter writer = new FileWriter("page.html");
+        HTMLGenerator htmlGenerator = new HTMLGenerator(writer);
+        htmlGenerator.generate(atributes);
+        writer.close();
 
     }
 
@@ -75,14 +82,14 @@ public class App {
             Matcher matcherImageUrl = REGEX_GET_IMAGE_URL.matcher(movie);
             Matcher matcherRating = REGEX_GET_RATING.matcher(movie);
             Matcher matcherYear = REGEX_GET_YEAR.matcher(movie);
-            
-            while(matcherTitle.find() && matcherImageUrl.find() && matcherRating.find() && matcherYear.find())
-            atributes.add(
-                new Movie(
-                    matcherTitle.group(2), 
-                    matcherImageUrl.group(2), 
-                    matcherRating.group(2), 
-                    Integer.parseInt(matcherYear.group(2))));
+
+            while (matcherTitle.find() && matcherImageUrl.find() && matcherRating.find() && matcherYear.find())
+                atributes.add(
+                        new Movie(
+                                matcherTitle.group(2),
+                                matcherImageUrl.group(2),
+                                matcherRating.group(2),
+                                Integer.parseInt(matcherYear.group(2))));
         }
 
         return atributes;
