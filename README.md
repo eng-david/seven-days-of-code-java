@@ -42,3 +42,10 @@ Foi criada a classe HTMLGenerator que recebe no construtor um objeto Writer e um
 
 <p align='center'><img src='assets/print-dia4.png' alt='print dia 1'/></p>
 
+# Dia 5:
+- [X] Encapsular a chamada da API dentro de uma nova classe.
+- [X] Criar uma nova classe para fazer o parseamento do Json.
+
+Foi criada uma nova classe chamada `TmdbApiClient` que recebe no seu construtor um String da chave da API, e contém o método getBody() que faz a requisição HTTP e devolve o JSON.<br>
+Também foi criada a classe `TmdbJsonParser` que recebe no seu construtor o JSON e contém o método parse() que devolve o List&lt;Movie&gt; relativo a esse JSON.<br>
+Dessa forma utilizando o conceito de encapsulamento foi possível reduzir a complexidade da classe principal e tornar o código mais legível.
