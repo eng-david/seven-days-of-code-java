@@ -1,4 +1,4 @@
-package br.com.voltorb.sdoc_java;
+package br.com.voltorb.sdoc_java.client;
 
 import java.io.IOException;
 import java.net.URI;
@@ -6,26 +6,18 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.Map;
 
-public class TmdbApiClient {
+public class ApiClient_I implements ApiClient {
 
-    private String apiKey;
-    private StringBuilder url = new StringBuilder(
-            "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&");
+    protected Map<String, String> apiKey;
+    protected StringBuilder url = new StringBuilder();
 
-    public TmdbApiClient(String key) {
-        this.apiKey = key;
-        url.append(apiKey);
-    }
-
-    private String getUrl() {
-        return url.toString();
-    }
-
+    @Override
     public String getBody() {
         // --- Get API Json ---
         try {
-            URI endereço = URI.create(getUrl());
+            URI endereço = URI.create(url.toString());
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder(endereço)
                     .GET()
@@ -37,5 +29,5 @@ public class TmdbApiClient {
             return "connection error";
         }
     }
-
+    
 }

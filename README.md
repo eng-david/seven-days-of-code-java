@@ -49,3 +49,13 @@ Foi criada a classe HTMLGenerator que recebe no construtor um objeto Writer e um
 Foi criada uma nova classe chamada `TmdbApiClient` que recebe no seu construtor um String da chave da API, e contém o método getBody() que faz a requisição HTTP e devolve o JSON.<br>
 Também foi criada a classe `TmdbJsonParser` que recebe no seu construtor o JSON e contém o método parse() que devolve o List&lt;Movie&gt; relativo a esse JSON.<br>
 Dessa forma utilizando o conceito de encapsulamento foi possível reduzir a complexidade da classe principal e tornar o código mais legível.
+
+# Dia 6:
+- [X] Criar uma nova interface que irá definir o comportamento comum de um conteúdo.
+- [X] Criar uma interface para Json Parser.
+- [X] Criar uma interface chamada APIClient com o método getBody().
+- [X] Desenvolver um novo cliente de API e Json Parser com base nas interfaces criadas e consumir a API da Marvel.
+
+Foram criadas as classes `MarvelApiClient` e `MarvelJsonParser` semelhantes as existentes para o TMDB. Dessa forma em posse das devidas chaves de API foi possível gerar a pagina HTML a partir do conteúdo consumido da API da Marvel.
+
+<p align='center'><img src='assets/print-dia5.png' alt='print dia 1'/></p>

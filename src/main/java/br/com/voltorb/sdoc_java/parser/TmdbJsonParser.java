@@ -1,37 +1,33 @@
-package br.com.voltorb.sdoc_java;
+package br.com.voltorb.sdoc_java.parser;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TmdbJsonParser {
-    
-    private String json;
+import br.com.voltorb.sdoc_java.model.Movie;
+
+public class TmdbJsonParser extends MovieParser_I {
 
     public TmdbJsonParser(String json) {
         this.json = json;
     }
 
-    public List<Movie> parse(){
-        // --- Generate Movies List ---
-        String[] movies = moviesList(json);
-
-        // --- Generate Atributes List ---
-        return moviesAtributesList(movies);
-    }
-
-    private static String[] moviesList(String json) {
+    @Override
+    protected List<String> moviesList(String json) {
         Pattern REGEX_ITEMS = Pattern.compile("\\[(.+)\\]");
         Matcher list = REGEX_ITEMS.matcher(json);
         if (!list.find())
             throw new IllegalArgumentException("Não encontrou items.");
-        return list.group(1).split("\\},\\{");
+
+        return Arrays.asList(list.group(1).split("\\},\\{"));
     }
 
-    private static List<Movie> moviesAtributesList(String[] movies) {
+    @Override
+    protected List<Movie> moviesAtributesList(List<String> movies) {
 
-        List<Movie> atributes = new ArrayList<>();
+        List<Movie> moviesList = new ArrayList<>();
 
         Pattern REGEX_GET_TITLE = Pattern.compile("\"(title)\":\"(.*?)\"");
         Pattern REGEX_GET_IMAGE_URL = Pattern.compile("\"(poster_path)\":\"(.*?)\"");
@@ -45,14 +41,14 @@ public class TmdbJsonParser {
             Matcher matcherYear = REGEX_GET_YEAR.matcher(movie);
 
             while (matcherTitle.find() && matcherImageUrl.find() && matcherRating.find() && matcherYear.find())
-                atributes.add(
+                moviesList.add(
                         new Movie(
                                 matcherTitle.group(2),
-                                matcherImageUrl.group(2),
+                                ("https://image.tmdb.org/t/p/w200" + matcherImageUrl.group(2)),
                                 matcherRating.group(2),
                                 Integer.parseInt(matcherYear.group(2))));
         }
 
-        return atributes;
+        return moviesList;
     }
 }

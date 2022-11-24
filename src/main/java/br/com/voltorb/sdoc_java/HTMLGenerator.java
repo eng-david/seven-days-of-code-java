@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 
+import br.com.voltorb.sdoc_java.model.Movie;
+
 public class HTMLGenerator {
 
     private Writer writer;
@@ -30,7 +32,7 @@ public class HTMLGenerator {
                     <div class=\"card text-white bg-dark ml-3 mb-3\" style=\"width: 18rem; height: fit-content;\">
                         <h4 class=\"card-header\" style=\"height: 3rem;\">%s</h4>
                         <div class=\"card-body\">
-                            <img class=\"card-img\" src=\"https://image.tmdb.org/t/p/w200%s\" alt=\"%s\">
+                            <img class=\"card-img\" src=\"%s\" alt=\"%s\">
                             <p class=\"card-text mt-2\">Nota: %s - Ano: %s</p>
                         </div>
                     </div>
