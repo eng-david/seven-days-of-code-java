@@ -62,6 +62,20 @@ Foram criadas as classes `MarvelApiClient` e `MarvelJsonParser` semelhantes as e
 
 # Dia 7:
 - [X] Implementar um método de ordenação para a classe Movies através da interface Comparable.
-- [X] Implementar uma ENUM para selecionar previamente de forma simples o tipo de conteúdo TMDB, Marvel e possíveis outros.
+- [X] Implementar uma ENUM para selecionar previamente a origem do conteúdo.
 
-A ordem natural da classe Movie foi definida como senda o ano de lançamento, dessa forma será respeitada essa ordem na geração do HTML.
+A ordem natural da classe Movie foi definida como senda o ano de lançamento, dessa forma será respeitada essa ordem na geração do HTML.<br>
+A primeira linha no método main consiste em uma ENUM, que pode ser personalizada para selecionar previamente a API que a aplicação vai consumir:
+
+<br>
+
+para TMDB:
+```java
+API_EXTRATOR myApi = API_EXTRATOR.TMDB;
+```
+para MARVEL:
+```java
+API_EXTRATOR myApi = API_EXTRATOR.MARVEL;
+```
+
+<p align='center'><img src='assets/print-dia6.png' alt='print dia 1'/>(filmes ordenados pelo ano de lançamento)</p>
