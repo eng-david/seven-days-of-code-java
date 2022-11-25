@@ -6,7 +6,8 @@ import java.util.Map;
 
 public class MarvelApiClient extends ApiClient_I {
 
-    public MarvelApiClient(Map<String, String> key) throws NoSuchAlgorithmException {
+    @Override
+    public void setApiKey(Map<String, String> key) {
         this.apiKey = key;
 
         url.append("https://gateway.marvel.com:443/v1/public/series?");

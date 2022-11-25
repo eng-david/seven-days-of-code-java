@@ -59,3 +59,9 @@ Dessa forma utilizando o conceito de encapsulamento foi possível reduzir a comp
 Foram criadas as classes `MarvelApiClient` e `MarvelJsonParser` semelhantes as existentes para o TMDB. Dessa forma em posse das devidas chaves de API foi possível gerar a pagina HTML a partir do conteúdo consumido da API da Marvel.
 
 <p align='center'><img src='assets/print-dia5.png' alt='print dia 1'/></p>
+
+# Dia 7:
+- [X] Implementar um método de ordenação para a classe Movies através da interface Comparable.
+- [X] Implementar uma ENUM para selecionar previamente de forma simples o tipo de conteúdo TMDB, Marvel e possíveis outros.
+
+A ordem natural da classe Movie foi definida como senda o ano de lançamento, dessa forma será respeitada essa ordem na geração do HTML.

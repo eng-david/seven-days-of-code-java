@@ -8,14 +8,18 @@ import java.util.regex.Pattern;
 
 import br.com.voltorb.sdoc_java.model.Movie;
 
-public class TmdbJsonParser extends MovieParser_I {
-
-    public TmdbJsonParser(String json) {
-        this.json = json;
-    }
+public class TmdbJsonParser implements JsonParser {
 
     @Override
-    protected List<String> moviesList(String json) {
+    public List<Movie> parse(String json) {
+        // --- Generate Movies List ---
+        List<String> movies = moviesList(json);
+
+        // --- Generate Atributes List ---
+        return moviesAtributesList(movies);
+    }
+
+    private List<String> moviesList(String json) {
         Pattern REGEX_ITEMS = Pattern.compile("\\[(.+)\\]");
         Matcher list = REGEX_ITEMS.matcher(json);
         if (!list.find())
@@ -24,8 +28,7 @@ public class TmdbJsonParser extends MovieParser_I {
         return Arrays.asList(list.group(1).split("\\},\\{"));
     }
 
-    @Override
-    protected List<Movie> moviesAtributesList(List<String> movies) {
+    private List<Movie> moviesAtributesList(List<String> movies) {
 
         List<Movie> moviesList = new ArrayList<>();
 

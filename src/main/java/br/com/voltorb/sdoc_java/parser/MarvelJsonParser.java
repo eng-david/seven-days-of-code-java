@@ -7,14 +7,19 @@ import java.util.regex.Pattern;
 
 import br.com.voltorb.sdoc_java.model.Movie;
 
-public class MarvelJsonParser extends MovieParser_I {
+public class MarvelJsonParser implements JsonParser {
 
-    public MarvelJsonParser(String json) {
-        this.json = json;
-    }
 
     @Override
-    protected List<String> moviesList(String json) {
+    public List<Movie> parse(String json) {
+        // --- Generate Movies List ---
+        List<String> movies = moviesList(json);
+
+        // --- Generate Atributes List ---
+        return moviesAtributesList(movies);
+    }
+
+    private List<String> moviesList(String json) {
 
         Pattern REGEX_ITEMS = Pattern.compile("\\[(.+)\\]");
         Pattern REGEX_SPLITER = Pattern.compile("(id\".+?\"previous\":.+?})");
@@ -33,8 +38,7 @@ public class MarvelJsonParser extends MovieParser_I {
 
     }
 
-    @Override
-    protected List<Movie> moviesAtributesList(List<String> movies) {
+    private List<Movie> moviesAtributesList(List<String> movies) {
 
         List<Movie> moviesList = new ArrayList<>();
 
