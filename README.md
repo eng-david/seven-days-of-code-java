@@ -2,7 +2,7 @@
 
 <p align='center'><img src='assets/logo.svg' width=240 alt='logo'/></p>
 
-![Development Status Badge](https://img.shields.io/badge/Status-Em%20Desenvolvimento-orange)
+![Development Status Badge](https://img.shields.io/badge/Status-Concluido-green)
 
 ## Resumo do projeto:
 Usando apenas código Java, consumir uma API para pesquisar os top 250 filmes da lista do ~~IMDB~~ TMDB e criar um HTML com os resultados JSON devolvidos.
@@ -12,6 +12,7 @@ Usando apenas código Java, consumir uma API para pesquisar os top 250 filmes da
 - `Linguagem Java`
 - `JSON`
 - `TMDB API`
+- `Marvel API`
 
 # Dia 1:
 - [X] Criar uma conta no ~~IMDB~~ TMDB para ter a chave de acesso ao serviço (apiKey).
